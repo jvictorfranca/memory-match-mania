@@ -48,6 +48,7 @@ function App() {
       <ResetButton onReset = {() => {reInitializeGame(gridSize)}}/>
       <Settings onGridChange={reInitializeGame}/>
 
+      {matches === deck.length/2 && <Graffiti />}
       <ScoreBoard moves={moves} matches={matches} total={deck.length/2}/>
       <div className="flex-grow">
 
@@ -55,7 +56,6 @@ function App() {
       </div>
 
 
-      {matches === deck.length/2 && <Graffiti />}
 
       <button onClick={() => {console.log(deck)}}>Log state</button>
     </div>
