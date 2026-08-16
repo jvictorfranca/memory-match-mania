@@ -109,3 +109,12 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg)
+}

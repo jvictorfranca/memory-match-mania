@@ -7,6 +7,7 @@ import ScoreBoard from './components/ScoreBoard'
 import Settings from './components/Settings'
 import generateIcons from './utils/generateIcons'
 import shuffleDeck from './utils/shuffleDeck'
+import Graffiti from './components/Graffiti'
 
 function App() {
 
@@ -40,14 +41,21 @@ function App() {
   }
   
   return (
-    <div>
+    <div className="h-screen flex flex-col p-4 pax-w-screen-md mx-auto bg-gradient-to-bl from-cyan-100 via-blue-50 to-white">
       <h1>Memory Match Mania</h1>
 
 
       <ResetButton onReset = {() => {reInitializeGame(gridSize)}}/>
-      <ScoreBoard />
-      <GameBoard />
       <Settings onGridChange={reInitializeGame}/>
+
+      <div className="flex-grow">
+
+        <GameBoard gridSize={gridSize} deck={deck} setMoves={setMoves} setMatches={setMatches} />
+      </div>
+
+      <ScoreBoard moves={moves} matches={matches} total={deck.length/2}/>
+
+      {matches === deck.length/2 && <Graffiti />}
 
       <button onClick={() => {console.log(deck)}}>Log state</button>
     </div>
