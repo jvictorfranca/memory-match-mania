@@ -38,6 +38,8 @@ function App() {
 
     setMatches(0)
     setMoves(0)
+
+    setResetCounter((prev) => prev + 1)
   }
   
   return (
@@ -52,7 +54,7 @@ function App() {
       <ScoreBoard moves={moves} matches={matches} total={deck.length/2}/>
       <div className="flex-grow">
 
-        <GameBoard gridSize={gridSize} deck={deck} setMoves={setMoves} setMatches={setMatches} />
+        <GameBoard gridSize={gridSize} deck={deck} setMoves={setMoves} setMatches={setMatches} key={resetCount} />
       </div>
 
 
