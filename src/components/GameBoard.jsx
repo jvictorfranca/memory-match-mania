@@ -33,7 +33,15 @@ const GameBoard = ({gridSize, deck, setMoves, setMatches}) => {
 
             lockBoard.current = false
 
-            setMatches((prev) => prev + 1)
+            setMatches((prev) =>{
+               
+               if(prev + 1 === deck.length / 2) {
+                const audio = new Audio("audio/victory.mp3")
+                audio.play()
+               }
+                return prev + 1
+            
+            })
         } else {
             setTimeout(() => {
                 firstCard.current.unflip()

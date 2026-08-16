@@ -1,11 +1,19 @@
 import { useState, useImperativeHandle, forwardRef } from "react"
+import playFlipSound from "../utils/playFlip"
 
 const Card = ({icon, onClick}, ref) => {
     const [flipped, setFlipped] = useState(false)
 
     useImperativeHandle(ref, () => ({
-        flip: () => setFlipped(true),
-        unflip: () => setFlipped(false),
+        flip: () => {
+            setFlipped(true)
+            playFlipSound()
+            
+        },
+        unflip: () => {
+            setFlipped(false)
+            playFlipSound()
+        },
         get flipped() {return flipped},
         get icon() {return icon}
     }))

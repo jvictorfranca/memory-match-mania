@@ -5,6 +5,7 @@ const Settings = ({onGridChange}) => {
             <select id="grid-size" className="p-2 border rounded"
                 onChange={(e) => onGridChange(parseInt(e.target.value))}
             >
+                <option value={2}> 2x2</option>
                 <option value={4}>4x4</option>
                 <option value={6}>6x6</option>
                 <option value={8}>8x8</option>
