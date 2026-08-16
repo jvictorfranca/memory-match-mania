@@ -1,7 +1,20 @@
-const Card = ({icon, key}) => {
+import { useState, useImperativeHandle, forwardRef } from "react"
+
+const Card = ({icon, onClick}, ref) => {
+    const [flipped, setFlipped] = useState(false)
+
+    useImperativeHandle(ref, () => ({
+        flip: () => setFlipped(true),
+        unflip: () => setFlipped(false),
+        get flipped() {return flipped},
+        get icon() {return icon}
+    }))
+    
     return (
-            <div key={key} className="w-full h-full cursor-pointer select-none">
-                <div className="relative w-full h-full">
+            <div className="w-full h-full cursor-pointer select-none perspective"
+                onClick={onClick}
+            >
+                <div className={`relative w-full h-full ${flipped ? "rotate-y-180" : ""} transition-transofrm duration-500 transform-style preserve-3d`}>
                     
                     {/* Front*/}
                     <div className="flex items-center justify-center bg-white/70 backdrop-blue-sm border-bkue-200 w-full h-full border rounded transition-colors duration-300 absolute inset-0 backface-hidden">
@@ -19,4 +32,4 @@ const Card = ({icon, key}) => {
     )
 }
 
-export default Card
+export default forwardRef(Card)

@@ -48,12 +48,12 @@ function App() {
       <ResetButton onReset = {() => {reInitializeGame(gridSize)}}/>
       <Settings onGridChange={reInitializeGame}/>
 
+      <ScoreBoard moves={moves} matches={matches} total={deck.length/2}/>
       <div className="flex-grow">
 
         <GameBoard gridSize={gridSize} deck={deck} setMoves={setMoves} setMatches={setMatches} />
       </div>
 
-      <ScoreBoard moves={moves} matches={matches} total={deck.length/2}/>
 
       {matches === deck.length/2 && <Graffiti />}
 
